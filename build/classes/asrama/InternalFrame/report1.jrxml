@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d2578b5f-3310-4b00-8b1d-4aec27858bcb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="tglmulai" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tglsampai" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select no_invoice,tanggalbayar,jumlah as debet, "" as kredit, "Pembayaran Denda" as jenis from bayardenda
+where tanggalbayar>=$P{tglmulai} and tanggalbayar <=$P{tglsampai}
+UNION
+select no_invoice,tanggalbayar,jumlah as debet, "" as kredit, "Pembayaran Sewa Kios" as jenis from bayarkios
+where tanggalbayar>=$P{tglmulai} and tanggalbayar <=$P{tglsampai}
+UNION
+select no_invoice,tanggalbayar,jumlah as debet, "" as kredit, "Pembayaran Sewa kamar" as jenis from bayarkamar
+where tanggalbayar>=$P{tglmulai} and tanggalbayar <=$P{tglsampai}
+Union 
+select no_invoice,tanggalbayar,jumlah as debet, "" as kredit, "Pembayaran Sewa kamar Tamu" as jenis from bayarkamartamu
+where tanggalbayar>=$P{tglmulai} and tanggalbayar <=$P{tglsampai}
+UNION
+select idpengeluaran AS no_invoice,tanggalbayar,"" as debet, jumlah as kredit, keterangan as jenis from pengeluaran
+where tanggalbayar>=$P{tglmulai} and tanggalbayar <=$P{tglsampai}
+
+order BY
+tanggalbayar]]>
+	</queryString>
+	<field name="no_invoice" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tanggalbayar" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="debet" class="java.lang.String"/>
+	<field name="kredit" class="java.lang.String"/>
+	<field name="jenis" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="19" width="555" height="34" uuid="1c962f51-11fe-4a20-998e-0cd2417af8f3"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN KEUANGAN ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="56" y="58" width="100" height="20" uuid="7e2c386d-e801-4978-88f9-4340b9b7fd0c"/>
+				<textFieldExpression><![CDATA[$P{tglmulai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="58" width="100" height="20" uuid="2571bc3c-667f-42f3-9a24-1dd88527221a"/>
+				<textFieldExpression><![CDATA[$P{tglsampai}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="7" y="58" width="49" height="20" uuid="4d8ce653-b400-4edd-8b12-1551a7fc97b9"/>
+				<text><![CDATA[Perode:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="58" width="78" height="20" uuid="5705eba7-e9de-4e82-84f8-a118759dc22a"/>
+				<text><![CDATA[Sampai Dengan]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="34" width="555" height="1" uuid="3ba68ee9-2444-4f6d-8151-0a48bc92a862"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="21676e97-c7cf-4bf8-a00c-28c98060ef5b"/>
+				<text><![CDATA[no_invoice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="2a7cf22f-706d-463c-b47c-249e4bd66c8f"/>
+				<text><![CDATA[tanggalbayar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="3b75e455-edd2-41d5-b7e4-e950de8ea511"/>
+				<text><![CDATA[debet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="2" width="100" height="20" uuid="20dadacd-2ac6-4541-b2af-32b6d3e7d871"/>
+				<text><![CDATA[kredit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="2" width="100" height="20" uuid="5d5fd6cd-2b57-47d1-9a4d-bcd472982ee0"/>
+				<text><![CDATA[jenis]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="34" width="555" height="1" uuid="4b8f0daa-6b5c-41c8-8541-3b3ea380f8db"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="59" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="13" width="100" height="20" uuid="ed88db3f-a766-44e0-8de4-a00bf7e623f1"/>
+				<textFieldExpression><![CDATA[$F{no_invoice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="13" width="100" height="20" uuid="7cb7ce84-ba44-4c23-b21f-add52566634f"/>
+				<textFieldExpression><![CDATA[$F{tanggalbayar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="13" width="100" height="20" uuid="08b27955-3f80-4e3c-934e-e894f24dc9dc"/>
+				<textFieldExpression><![CDATA[$F{debet}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="307" y="13" width="100" height="20" uuid="ee6a4c39-ff27-42ec-b1e2-1e4d665b2222"/>
+				<textFieldExpression><![CDATA[$F{kredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="15" width="100" height="20" uuid="f23f0c7b-5bac-4fa1-8be0-054f8bbd7f91"/>
+				<textFieldExpression><![CDATA[$F{jenis}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement x="404" y="0" width="100" height="1" uuid="bfa733ce-5410-4edd-9d35-0da7a3304f9a"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="3056288d-2e0d-4aee-9b74-9e7d5522c1f5"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
