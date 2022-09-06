@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
- * @author zahir-netbook
+ * 
  */
 public class RenderingRight extends DefaultTableCellRenderer{
 

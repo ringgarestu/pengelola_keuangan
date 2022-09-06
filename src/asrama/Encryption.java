@@ -6,11 +6,15 @@
 package asrama;
 
 import java.math.BigInteger;
+import java.nio.charset.Charset;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+import java.util.Locale;
 
 /**
  *
- * @author zahir-netbook
+ * 
  */
 public class Encryption {
     
@@ -24,6 +28,24 @@ public class Encryption {
                 hashtext = "0"+hashtext;
             }
             return hashtext;
+        }catch(Exception e){
+            e.printStackTrace();
+            throw  new RuntimeException(e);
+        }
+    }
+    
+    public static String MD5toText(String input){
+        try{
+            String result = null;
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("MD5");
+            md.update(input.getBytes(Charset.forName("UTF-8")));
+            result = String.format(Locale.ROOT, "%032x", new BigInteger(1, md.digest()));
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException(e);
+        }
+        return result;
         }catch(Exception e){
             e.printStackTrace();
             throw  new RuntimeException(e);

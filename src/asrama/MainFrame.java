@@ -16,6 +16,7 @@ import asrama.InternalFrame.InternalBayarKios;
 import asrama.InternalFrame.InternalCustomer;
 import asrama.InternalFrame.InternalKamar;
 import asrama.InternalFrame.InternalKegiatan;
+import asrama.InternalFrame.InternalKelolaAkun;
 import asrama.InternalFrame.InternalKios;
 import asrama.InternalFrame.InternalLapKeuangan;
 import asrama.InternalFrame.InternalLapPembayaran;
@@ -29,8 +30,11 @@ import asrama.InternalFrame.InternalTagihanBlmBayar;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -84,6 +88,8 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         MenuPurchaseReport = new javax.swing.JMenuItem();
         MenuProductReport = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        kelolaakun = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -258,6 +264,18 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu4.add(MenuProductReport);
 
         jMenuBar1.add(jMenu4);
+
+        jMenu1.setText("Pengguna");
+
+        kelolaakun.setText("Kelola Akun");
+        kelolaakun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kelolaakunActionPerformed(evt);
+            }
+        });
+        jMenu1.add(kelolaakun);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -616,6 +634,26 @@ public class MainFrame extends javax.swing.JFrame {
 dispose();
     }//GEN-LAST:event_MenuLogoutActionPerformed
 
+    private void kelolaakunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kelolaakunActionPerformed
+        setCursor(hourglassCursor);
+        panelBG.setLayout(new java.awt.BorderLayout());
+        panelBG.removeAll();
+        repaint();
+        InternalKelolaAkun ic = new InternalKelolaAkun();
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (screen.width - ic.getSize().width)/2;
+        int y = (screen.height - ic.getSize().height)/2;
+        ic.setLocation(x, y);
+        ic.show();
+        panelBG.add(ic);
+        try {
+            ic.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        setCursor(normalCursor);         
+    }//GEN-LAST:event_kelolaakunActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -681,6 +719,7 @@ dispose();
     private javax.swing.JMenuItem MenuSalesReturn;
     private javax.swing.JMenuItem MenuSewaKamar;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -693,6 +732,7 @@ dispose();
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem kelolaakun;
     private javax.swing.JPanel panelBG;
     // End of variables declaration//GEN-END:variables
 }

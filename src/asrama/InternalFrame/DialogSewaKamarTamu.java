@@ -319,7 +319,7 @@ public class DialogSewaKamarTamu extends javax.swing.JDialog {
 
     public void getKamar(){
         try {
-            String sql = "SELECT * FROM kamar WHERE kategori='Belum Lunas'";
+            String sql = "SELECT * FROM kamar WHERE kategori='customer'";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){cbKamar.addItem(rs.getString("kamar_code"));}
         }catch(Exception e){e.printStackTrace();}

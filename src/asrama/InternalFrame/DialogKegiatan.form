@@ -99,6 +99,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="IDKegiatan">
               <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IDKegiatanActionPerformed"/>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="IDKegiatanKeyPressed"/>
               </Events>
               <AuxValues>

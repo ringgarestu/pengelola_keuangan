@@ -67,6 +67,11 @@ public final class DialogKegiatan extends javax.swing.JDialog {
 
         jLabel2.setText("Nama Kegiatan ");
 
+        IDKegiatan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDKegiatanActionPerformed(evt);
+            }
+        });
         IDKegiatan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 IDKegiatanKeyPressed(evt);
@@ -168,6 +173,10 @@ public final class DialogKegiatan extends javax.swing.JDialog {
     private void buttonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCloseActionPerformed
         dispose();
     }//GEN-LAST:event_buttonCloseActionPerformed
+
+    private void IDKegiatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDKegiatanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDKegiatanActionPerformed
     public void createIDKegiatan(){
         try {
             String sql = "select coalesce(max(id_kegiatan)+1,5010001) as max_kamar_id from kegiatan";

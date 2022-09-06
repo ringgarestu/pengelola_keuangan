@@ -134,6 +134,11 @@ public class DialogSewaKamar extends javax.swing.JDialog {
                 cbKamarItemStateChanged(evt);
             }
         });
+        cbKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbKamarActionPerformed(evt);
+            }
+        });
 
         cbAnggota.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -320,9 +325,13 @@ public class DialogSewaKamar extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbAnggotaActionPerformed
 
+    private void cbKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKamarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbKamarActionPerformed
+
     public void getKamar(){
         try {
-            String sql = "select * from kamar where kategori='Lunas'";
+            String sql = "select * from kamar where kategori = 'anggota'";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){cbKamar.addItem(rs.getString("kamar_code"));}
         }catch(Exception e){e.printStackTrace();}
