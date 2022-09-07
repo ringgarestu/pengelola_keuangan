@@ -85,12 +85,12 @@ public void createTableKegiatan(){
         scroll.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        Object[] row = {"Username","Password"};
+        Object[] row = {"Username"};
         tabMode = new DefaultTableModel(null,row);
         table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         table.setModel(tabMode);
         table.getColumnModel().getColumn(0).setPreferredWidth(100);
-        table.getColumnModel().getColumn(1).setPreferredWidth(300);
+//        table.getColumnModel().getColumn(1).setPreferredWidth(300);
         table.getTableHeader().setFont(new Font("Dialog",Font.BOLD,15));
         table.setFont(new java.awt.Font("Dialog",0,12));
         scroll.getViewport().add(table);
@@ -104,8 +104,8 @@ public void createTableKegiatan(){
             while(rs.next()){
                 String username = rs.getString("username");
 //                String password = Encryption.MD5toText(rs.getString("password"));
-                String password = rs.getString("password");
-                String [] in_table = {username,password};
+//                String password = rs.getString("password");
+                String [] in_table = {username};
                 tabMode.addRow(in_table);
             }
         }catch(Exception e){e.printStackTrace();}

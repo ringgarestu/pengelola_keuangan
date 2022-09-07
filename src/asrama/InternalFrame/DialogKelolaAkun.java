@@ -30,7 +30,7 @@ public class DialogKelolaAkun extends javax.swing.JDialog {
      * Creates new form DialogKelolaAkun
      */
     public DialogKelolaAkun() {
-        super(new Frame (), "Detail Kelola Akun", true);
+        super(new Frame(), "Detail Kelola Akun", true);
         initComponents();
         if (status_dialog.equalsIgnoreCase("edit")){
             getDetailPengguna();
@@ -256,7 +256,6 @@ public class DialogKelolaAkun extends javax.swing.JDialog {
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){
                 username.setText(rs.getString("username"));
-                password.setText(rs.getString("password"));
             }
         }catch(Exception e){e.printStackTrace();}
     }
