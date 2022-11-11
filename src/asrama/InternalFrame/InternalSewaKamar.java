@@ -102,6 +102,11 @@ public class InternalSewaKamar extends javax.swing.JInternalFrame {
         jPanel4.add(jLabel1);
 
         filterName.setPreferredSize(new java.awt.Dimension(120, 20));
+        filterName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterNameActionPerformed(evt);
+            }
+        });
         filterName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 filterNameKeyPressed(evt);
@@ -221,6 +226,10 @@ public class InternalSewaKamar extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonCloseActionPerformed
 
+    private void filterNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filterNameActionPerformed
+
     public void createTableSewaKamar(){
         jPanel1.setLayout(new java.awt.BorderLayout());
         scroll.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -250,7 +259,7 @@ public class InternalSewaKamar extends javax.swing.JInternalFrame {
         clearTable();
         try {
             String sql = "select sewakamar.*,anggota.nama from sewakamar,anggota where "
-                    + "anggota.kode=sewakamar.kodeanggota";
+                    + "anggota.kode=sewakamar.kodeanggota " + addQuery;
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){
                 String no_invoice = rs.getString("no_invoice");

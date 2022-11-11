@@ -21,6 +21,15 @@ import javax.swing.table.TableCellRenderer;
 import asrama.RenderingCenter;
 import asrama.RenderingRight;
 import asrama.connect_DB;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.HashMap;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -39,6 +48,11 @@ public class InternalBayarKios extends javax.swing.JInternalFrame {
     
     public TableCellRenderer right_ = new RenderingRight();
     public TableCellRenderer center_ = new RenderingCenter();
+    
+    HashMap param = new HashMap();
+    JasperReport JasRep;
+    JasperPrint Jaspri;
+    JasperDesign JasDes;
     
     public InternalBayarKios() {
         initComponents();
@@ -65,6 +79,7 @@ public class InternalBayarKios extends javax.swing.JInternalFrame {
         filterName = new javax.swing.JTextField();
         buttonFilter = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        btnCetak = new javax.swing.JButton();
         buttonAdd = new javax.swing.JButton();
         buttonEdit = new javax.swing.JButton();
         buttonDelete = new javax.swing.JButton();
@@ -120,6 +135,14 @@ public class InternalBayarKios extends javax.swing.JInternalFrame {
         jPanel2.add(jPanel4);
 
         jPanel5.setOpaque(false);
+
+        btnCetak.setText("Cetak");
+        btnCetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCetakActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnCetak);
 
         buttonAdd.setText("Add");
         buttonAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -221,12 +244,42 @@ public class InternalBayarKios extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonCloseActionPerformed
 
+    private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
+    java.sql.Connection conn = null;
+        
+        try{
+            String jdbcDriver = "com.mysql.jdbc.Driver";
+            Class.forName(jdbcDriver);
+            
+            String url = "jdbc:mysql://localhost:3306/asrama";
+            String user = "root";
+            String pass = "";
+            
+            conn = DriverManager.getConnection(url, user, pass);
+            Statement stm = conn.createStatement();
+            try{
+                String report = ("E:\\Program_Skripsi_Ringga\\Project\\Asrama\\src\\asrama\\InternalFrame\\reportbayarkamaranggota.jrxml");
+                HashMap hash = new HashMap();
+                
+//                mengambil parameter dari ireport
+            hash.put("no_inovoice", filterName.getText());
+            JasperReport JRpt = JasperCompileManager.compileReport(report);
+            JasperPrint JPrint = JasperFillManager.fillReport(JRpt, param, conn);
+            JasperViewer.viewReport(JPrint, false);
+            } catch(Exception rptexcpt) {
+                System.out.println("Laporan Tidak Bisa Dicetak" + rptexcpt);
+            }
+        } catch (Exception ex){
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_btnCetakActionPerformed
+
     public void createTableBayarKios(){
         jPanel1.setLayout(new java.awt.BorderLayout());
         scroll.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        Object[] row = {"ID Bayar Kios","No Invoice","Tanggal Bayar","Denda","Jumlah",
+        Object[] row = {"ID Bayar Kios","No Invoice","Tanggal Bayar","Biaya","Denda","Jumlah",
             "Keterangan"};
         tabMode = new DefaultTableModel(null,row);
         table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
@@ -237,6 +290,7 @@ public class InternalBayarKios extends javax.swing.JInternalFrame {
         table.getColumnModel().getColumn(3).setPreferredWidth(200);
         table.getColumnModel().getColumn(4).setPreferredWidth(200);
         table.getColumnModel().getColumn(5).setPreferredWidth(200);
+        table.getColumnModel().getColumn(6).setPreferredWidth(200);
         table.getTableHeader().setFont(new Font("Dialog",Font.BOLD,15));
         table.setFont(new java.awt.Font("Dialog",0,12));
         scroll.getViewport().add(table);
@@ -252,10 +306,11 @@ public class InternalBayarKios extends javax.swing.JInternalFrame {
                 String idbayarkamar = rs.getString("idbayarkios");
                 String no_invoice = rs.getString("no_invoice");
                 String tanggalbayar = rs.getString("tanggalbayar");
+                String biaya = nf.format(rs.getDouble("biaya"));
                 String denda = nf.format(rs.getDouble("denda"));
-                String biaya = nf.format(rs.getDouble("jumlah"));
+                String jumlah = nf.format(rs.getDouble("jumlah"));
                 String keterangan = rs.getString("keterangan");
-                String [] in_table = {idbayarkamar,no_invoice,tanggalbayar,denda,biaya,keterangan};
+                String [] in_table = {idbayarkamar,no_invoice,tanggalbayar,biaya,denda,jumlah,keterangan};
                 tabMode.addRow(in_table);
             }
         }catch(Exception e){e.printStackTrace();}
@@ -294,6 +349,7 @@ public class InternalBayarKios extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCetak;
     private javax.swing.JButton buttonAdd;
     private javax.swing.JButton buttonClose;
     private javax.swing.JButton buttonDelete;

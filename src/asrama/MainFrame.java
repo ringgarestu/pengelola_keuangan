@@ -15,6 +15,7 @@ import asrama.InternalFrame.InternalBayarKamarTamu;
 import asrama.InternalFrame.InternalBayarKios;
 import asrama.InternalFrame.InternalCustomer;
 import asrama.InternalFrame.InternalKamar;
+import asrama.InternalFrame.InternalKamarTamu;
 import asrama.InternalFrame.InternalKegiatan;
 import asrama.InternalFrame.InternalKelolaAkun;
 import asrama.InternalFrame.InternalKios;
@@ -71,6 +72,7 @@ public class MainFrame extends javax.swing.JFrame {
         MenuMasterAnggota = new javax.swing.JMenuItem();
         MenuMasterCustomer = new javax.swing.JMenuItem();
         MenuMasterSupplier = new javax.swing.JMenuItem();
+        MenuMasterTamu = new javax.swing.JMenuItem();
         MenuMasterStockTaking = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -99,7 +101,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         MenuFile.setText("File");
 
-        MenuLogout.setText("Logout/Keluar");
+        MenuLogout.setText("Tutup Aplikasi");
         MenuLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuLogoutActionPerformed(evt);
@@ -127,13 +129,21 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jMenu2.add(MenuMasterCustomer);
 
-        MenuMasterSupplier.setText("Kamar");
+        MenuMasterSupplier.setText("Kamar Anggota");
         MenuMasterSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuMasterSupplierActionPerformed(evt);
             }
         });
         jMenu2.add(MenuMasterSupplier);
+
+        MenuMasterTamu.setText("Kamar Tamu");
+        MenuMasterTamu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuMasterTamuActionPerformed(evt);
+            }
+        });
+        jMenu2.add(MenuMasterTamu);
 
         MenuMasterStockTaking.setText("Kios");
         MenuMasterStockTaking.addActionListener(new java.awt.event.ActionListener() {
@@ -631,7 +641,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void MenuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuLogoutActionPerformed
-dispose();
+      dispose();
     }//GEN-LAST:event_MenuLogoutActionPerformed
 
     private void kelolaakunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kelolaakunActionPerformed
@@ -653,6 +663,25 @@ dispose();
         }
         setCursor(normalCursor);         
     }//GEN-LAST:event_kelolaakunActionPerformed
+
+    private void MenuMasterTamuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMasterTamuActionPerformed
+        // TODO add your handling code here:
+        setCursor(hourglassCursor);
+        panelBG.setLayout(new java.awt.BorderLayout());
+        panelBG.removeAll();
+        repaint();
+        InternalKamarTamu ic = new InternalKamarTamu();
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (screen.width - ic.getSize().width)/2;
+        int y = (screen.height - ic.getSize().height)/2;
+        ic.setLocation(x, y);
+        ic.show();
+        panelBG.add(ic);
+        try{
+            ic.setSelected(true);
+        }catch(java.beans.PropertyVetoException pv){pv.printStackTrace();}
+        setCursor(normalCursor);
+    }//GEN-LAST:event_MenuMasterTamuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -712,6 +741,7 @@ dispose();
     private javax.swing.JMenuItem MenuMasterCustomer;
     private javax.swing.JMenuItem MenuMasterStockTaking;
     private javax.swing.JMenuItem MenuMasterSupplier;
+    private javax.swing.JMenuItem MenuMasterTamu;
     private javax.swing.JMenuItem MenuProductReport;
     private javax.swing.JMenuItem MenuPurchase;
     private javax.swing.JMenuItem MenuPurchaseReport;

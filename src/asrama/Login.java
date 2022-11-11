@@ -126,11 +126,11 @@ public class Login extends javax.swing.JDialog {
                 String password_db = rs.getString("password");
                 if(password_db.equalsIgnoreCase(Encryption.MD5(passwordc))){
                     status_app = 1;
-                    JOptionPane.showMessageDialog(rootPane, "Your Password is Correct");
+                    JOptionPane.showMessageDialog(rootPane, "Kata Sandi Benar, Silakan Masuk");
                     setVisible(false);
                 }
                 else {
-                    JOptionPane.showMessageDialog(rootPane, "Wrong Password, Try Again");
+                    JOptionPane.showMessageDialog(rootPane, "Password Salah, Coba Lagi");
                     username.setText("");
                     password.setText("");
                     username.requestFocus();

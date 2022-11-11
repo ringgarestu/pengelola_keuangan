@@ -290,7 +290,7 @@ public class DialogSewaKamarTamu extends javax.swing.JDialog {
 
     private void BiayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BiayaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Biaya.setText(nf.format(Double.parseDouble(Biaya.getText().replace(".", ""))));
+            Biaya.setText(nf.format(Double.parseDouble(Biaya.getText().replace(",", ""))));
             Biaya.selectAll();
             Biaya.requestFocus();
         }
@@ -319,7 +319,7 @@ public class DialogSewaKamarTamu extends javax.swing.JDialog {
 
     public void getKamar(){
         try {
-            String sql = "SELECT * FROM kamar WHERE kategori='customer'";
+            String sql = "SELECT * FROM kamar WHERE kategori='Tamu'";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){cbKamar.addItem(rs.getString("kamar_code"));}
         }catch(Exception e){e.printStackTrace();}
@@ -349,7 +349,7 @@ public class DialogSewaKamarTamu extends javax.swing.JDialog {
             !"".equals(cbCustomer.getSelectedItem().toString()) &&
             jMulai.getDate() != null &&
             jSampai.getDate() != null &&
-            !"".equals(Biaya.getText().replace(".", "")) &&
+            !"".equals(Biaya.getText().replace(",", "")) &&
             !"".equals(cbStatus.getSelectedItem().toString())
                 ) {
             String sql = "insert into sewakamartamu values (?,?,?,?,?,?,?)";
@@ -368,7 +368,7 @@ public class DialogSewaKamarTamu extends javax.swing.JDialog {
                 ps.setString(4, TanggalMulai);
                 ps.setString(5, TanggalSampai);
                                              
-                ps.setString(6, Biaya.getText().replace(".", ""));;
+                ps.setString(6, Biaya.getText().replace(",", ""));;
                 ps.setString(7, cbStatus.getSelectedItem().toString());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Disimpan");
@@ -399,7 +399,7 @@ public class DialogSewaKamarTamu extends javax.swing.JDialog {
                 ps.setString(4, TanggalMulai);
                 ps.setString(5, TanggalSampai);
                 
-                ps.setString(6, Biaya.getText().replace(".", ""));;
+                ps.setString(6, Biaya.getText().replace(",", ""));;
                 ps.setString(7, cbStatus.getSelectedItem().toString());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Diedit");
@@ -418,7 +418,7 @@ public class DialogSewaKamarTamu extends javax.swing.JDialog {
                 jMulai.setDate(rs.getDate("tglmulai"));
                 jSampai.setDate(rs.getDate("tglsampai"));
                 Biaya.setText(nf.format(rs.getDouble("biaya")));
-                cbStatus.setSelectedItem(nf.format(rs.getDouble("status_bayar")));
+                cbStatus.setSelectedItem(rs.getString("status_bayar"));
             }
         }catch(Exception e){e.printStackTrace();}
     }

@@ -308,7 +308,7 @@ public class DialogBayarKamarTamu extends javax.swing.JDialog {
         try {
             //sewakamar.*,customer.nama_cust from sewakamar,customer where sewakamar.cust_id=customer.cust_id and sewakamar.status_bayar='0'
             //String sql = "select kamar_name from kamar where kamar_code='"+cbInvoice.getSelectedItem().toString()+"'";
-            String sql = "select sewakamartamu.*,customer.nama_cust from sewakamartamu,customer where sewakamartamu.cust_id=customer.cust_id and no_invoice='"+cbInvoice.getSelectedItem().toString()+"'";
+            String sql = "SELECT sewakamartamu.*,customer.nama_cust FROM sewakamartamu,customer WHERE sewakamartamu.cust_id=customer.cust_id AND no_invoice='"+cbInvoice.getSelectedItem().toString()+"'";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){
                 Kamar.setText(rs.getString("kamar_code"));
@@ -317,7 +317,6 @@ public class DialogBayarKamarTamu extends javax.swing.JDialog {
                 jSampai.setDate(rs.getDate("tglsampai"));
                 Biaya.setText(rs.getString("biaya"));
              //   Customer.setText(rs.getString(""));
-            
             }
         }catch(Exception e){e.printStackTrace();}
         cbInvoice.requestFocus();
@@ -353,7 +352,7 @@ public class DialogBayarKamarTamu extends javax.swing.JDialog {
 
     private void JumlahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JumlahKeyPressed
        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Jumlah.setText(nf.format(Double.parseDouble(Biaya.getText().replace(".", ""))));
+            Jumlah.setText(nf.format(Double.parseDouble(Biaya.getText().replace(",", ""))));
             Jumlah.selectAll();
             Jumlah.requestFocus();
         }        // TODO add your handling code here:
@@ -391,7 +390,7 @@ public class DialogBayarKamarTamu extends javax.swing.JDialog {
 
     public void getInvoice(){
         try {
-            String sql = "select sewakamartamu.*,customer.nama_cust from sewakamartamu,customer where sewakamartamu.cust_id=customer.cust_id and sewakamartamu.status_bayar='0'";
+            String sql = "select sewakamartamu.*,customer.nama_cust from sewakamartamu,customer where sewakamartamu.cust_id=customer.cust_id and sewakamartamu.status_bayar='Lunas'";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){
                 cbInvoice.addItem(rs.getString("no_invoice"));
@@ -419,7 +418,7 @@ public class DialogBayarKamarTamu extends javax.swing.JDialog {
             !"".equals(Jumlah.getText().replace(".", "")) &&
             !"".equals(Keterangan.getText())
             ) {
-            String sql = "insert into bayarkamartamu values (?,?,?,?,?,?)";
+            String sql = "insert into bayarkamartamu values (?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             try {
                 ps.setString(1, IdBayarKamar.getText());
@@ -431,9 +430,10 @@ public class DialogBayarKamarTamu extends javax.swing.JDialog {
                 TanggalBayar=String.valueOf(format.format(jTglBayar.getDate()));
 
                 ps.setString(3, TanggalBayar);
-                ps.setString(4, Denda.getText().replace(".", ""));
-                ps.setString(5, Jumlah.getText().replace(".", ""));
-                ps.setString(6, Keterangan.getText());
+                ps.setString(4, Biaya.getText().replace(".", ""));
+                ps.setString(5, Denda.getText().replace(".", ""));
+                ps.setString(6, Jumlah.getText().replace(".", ""));
+                ps.setString(7, Keterangan.getText());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Disimpan");
             }catch(Exception e){e.printStackTrace();
@@ -458,9 +458,10 @@ public class DialogBayarKamarTamu extends javax.swing.JDialog {
                 TanggalBayar=String.valueOf(format.format(jTglBayar.getDate()));
 
                 ps.setString(3, TanggalBayar);
-                ps.setString(4, Denda.getText().replace(".", ""));
-                ps.setString(5, Jumlah.getText().replace(".", ""));
-                ps.setString(6, Keterangan.getText());
+                ps.setString(4, Biaya.getText().replace(".", ""));
+                ps.setString(5, Denda.getText().replace(".", ""));
+                ps.setString(6, Jumlah.getText().replace(".", ""));
+                ps.setString(7, Keterangan.getText());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Diedit");
             }catch(Exception e){e.printStackTrace();}
@@ -475,6 +476,7 @@ public class DialogBayarKamarTamu extends javax.swing.JDialog {
                 IdBayarKamar.setText(rs.getString("idbayarkamar"));
                 cbInvoice.setSelectedItem(rs.getString("no_invoice"));
                 jTglBayar.setDate(rs.getDate("tanggalbayar"));
+                Biaya.setText(nf.format(rs.getDouble("biaya")));
                 Denda.setText(nf.format(rs.getDouble("denda")));
                 Jumlah.setText(nf.format(rs.getDouble("jumlah")));
                 Keterangan.setText(rs.getString("keterangan"));

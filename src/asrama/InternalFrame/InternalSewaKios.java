@@ -178,13 +178,13 @@ public class InternalSewaKios extends javax.swing.JInternalFrame {
 
     private void filterNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filterNameKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            addQuery = "and (no_invoice like ('%"+filterName.getText()+"%') or kios_code like ('%"+filterName.getText()+"%'))";
+            addQuery = "where (no_invoice like ('%"+filterName.getText()+"%') or kios_code like ('%"+filterName.getText()+"%'))";
             getDataSewaKios(addQuery);
         }
     }//GEN-LAST:event_filterNameKeyPressed
 
     private void buttonFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFilterActionPerformed
-        addQuery = "and (no_invoice like ('%"+filterName.getText()+"%') or kios_code like ('%"+filterName.getText()+"%'))";
+        addQuery = "where (no_invoice like ('%"+filterName.getText()+"%') or kios_code like ('%"+filterName.getText()+"%'))";
         getDataSewaKios(addQuery);
     }//GEN-LAST:event_buttonFilterActionPerformed
 
@@ -192,7 +192,7 @@ public class InternalSewaKios extends javax.swing.JInternalFrame {
         DialogSewaKios.status_dialog = "new";
         DialogSewaKios dc = new DialogSewaKios();
         dc.setVisible(true);
-        addQuery = "and (no_invoice like ('%"+filterName.getText()+"%') or kios_code like ('%"+filterName.getText()+"%'))";
+        addQuery = "where (no_invoice like ('%"+filterName.getText()+"%') or kios_code like ('%"+filterName.getText()+"%'))";
         getDataSewaKios(addQuery);
     }//GEN-LAST:event_buttonAddActionPerformed
 
@@ -200,7 +200,7 @@ public class InternalSewaKios extends javax.swing.JInternalFrame {
         DialogSewaKios.status_dialog = "edit";
         DialogSewaKios dc = new DialogSewaKios();
         dc.setVisible(true);
-        addQuery = " and (no_invoice like ('%"+filterName.getText()+"%') or kios_code like ('%"+filterName.getText()+"%'))";
+        addQuery = " where (no_invoice like ('%"+filterName.getText()+"%') or kios_code like ('%"+filterName.getText()+"%'))";
         getDataSewaKios(addQuery);
     }//GEN-LAST:event_buttonEditActionPerformed
 
@@ -226,20 +226,20 @@ public class InternalSewaKios extends javax.swing.JInternalFrame {
         scroll.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        Object[] row = {"No Invoice","Kode Kios","ID Pelanggan","Tanggal Mulai","Tanggal Sampai",
+        Object[] row = {"No Invoice","Kode Kios","Tanggal Mulai","Tanggal Sampai",
             "Biaya","Status"};
         tabMode = new DefaultTableModel(null,row);
         table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         table.setModel(tabMode);
         table.getColumnModel().getColumn(0).setPreferredWidth(100);
         table.getColumnModel().getColumn(1).setPreferredWidth(150);
+//        table.getColumnModel().getColumn(2).setPreferredWidth(200);
         table.getColumnModel().getColumn(2).setPreferredWidth(200);
         table.getColumnModel().getColumn(3).setPreferredWidth(200);
         table.getColumnModel().getColumn(4).setPreferredWidth(200);
-        table.getColumnModel().getColumn(5).setPreferredWidth(200);
+        table.getColumnModel().getColumn(4).setCellRenderer(center_);
+        table.getColumnModel().getColumn(5).setPreferredWidth(100);
         table.getColumnModel().getColumn(5).setCellRenderer(center_);
-        table.getColumnModel().getColumn(6).setPreferredWidth(100);
-        table.getColumnModel().getColumn(6).setCellRenderer(center_);
         table.getTableHeader().setFont(new Font("Dialog",Font.BOLD,15));
         table.setFont(new java.awt.Font("Dialog",0,12));
         scroll.getViewport().add(table);
@@ -249,18 +249,17 @@ public class InternalSewaKios extends javax.swing.JInternalFrame {
     public void getDataSewaKios(String addQuery){
         clearTable();
         try {
-            String sql = "select sewakios.*,customer.nama_cust from sewakios,customer where "
-                    + "customer.cust_id=sewakios.cust_id";
+            String sql = "select * from sewakios " + addQuery;
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){
                 String no_invoice = rs.getString("no_invoice");
                 String kios_code = rs.getString("kios_code");
-                String cust_id = rs.getString("cust_id");
+//                String cust_id = rs.getString("cust_id");
                 String tglmulai = rs.getString("tglmulai");
                 String tglsampai = rs.getString("tglsampai");
                 String biaya = nf.format(rs.getDouble("biaya"));
                 String status = rs.getString("status_bayar");
-                String [] in_table = {no_invoice,kios_code,cust_id,tglmulai,tglsampai,biaya,status};
+                String [] in_table = {no_invoice,kios_code,tglmulai,tglsampai,biaya,status};
                 tabMode.addRow(in_table);
             }
         }catch(Exception e){e.printStackTrace();}
@@ -291,7 +290,7 @@ public class InternalSewaKios extends javax.swing.JInternalFrame {
                     DialogSewaKios.status_dialog = "edit";
                     DialogSewaKios dp = new DialogSewaKios();
                     dp.setVisible(true);
-                    addQuery = "and (no_invoice like ('%"+filterName.getText()+"%') or kios_code like ('%"+filterName.getText()+"%'))";
+                    addQuery = "where (no_invoice like ('%"+filterName.getText()+"%') or kios_code like ('%"+filterName.getText()+"%'))";
                     getDataSewaKios(addQuery);
                 }
             }

@@ -11,7 +11,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="MenuLogout">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Logout/Keluar"/>
+                <Property name="text" type="java.lang.String" value="Tutup Aplikasi"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuLogoutActionPerformed"/>
@@ -42,10 +42,18 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MenuMasterSupplier">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Kamar"/>
+                <Property name="text" type="java.lang.String" value="Kamar Anggota"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuMasterSupplierActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuMasterTamu">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Kamar Tamu"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuMasterTamuActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MenuMasterStockTaking">

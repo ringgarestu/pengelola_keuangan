@@ -135,6 +135,11 @@ public class DialogBayarKamar extends javax.swing.JDialog {
         });
 
         Denda.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Denda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DendaActionPerformed(evt);
+            }
+        });
         Denda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DendaKeyPressed(evt);
@@ -276,7 +281,7 @@ public class DialogBayarKamar extends javax.swing.JDialog {
                     .addComponent(Keterangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -386,9 +391,13 @@ public class DialogBayarKamar extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbInvoiceActionPerformed
 
+    private void DendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DendaActionPerformed
+
     public void getInvoice(){
         try {
-            String sql = "SELECT sewakamar.*,anggota.nama FROM sewakamar,anggota WHERE sewakamar.kodeanggota=anggota.kode AND sewakamar.status_bayar=''";
+            String sql = "SELECT sewakamar.*, anggota.nama FROM sewakamar, anggota WHERE sewakamar.kodeanggota=anggota.kode AND sewakamar.status_bayar='Lunas'";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){
                 cbInvoice.addItem(rs.getString("no_invoice"));
@@ -412,11 +421,12 @@ public class DialogBayarKamar extends javax.swing.JDialog {
         if (!"".equals(IdBayarKamar.getText()) &&
             !"".equals(cbInvoice.getSelectedItem().toString()) &&
             jCalender.getDate() != null &&
+            !"".equals(Biaya.getText().replace(".", "")) &&
             !"".equals(Denda.getText().replace(".", "")) &&
-            !"".equals(Jumlah.getText().replace(".", "")) &&
-            !"".equals(Keterangan.getText())
+            !"".equals(Jumlah.getText().replace(".", ""))
+//            !"".equals(Keterangan.getText())
                 ) {
-            String sql = "insert into bayarkamar values (?,?,?,?,?,?)";
+            String sql = "insert into bayarkamar values (?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             try {
                 ps.setString(1, IdBayarKamar.getText());
@@ -428,9 +438,10 @@ public class DialogBayarKamar extends javax.swing.JDialog {
                 TanggalBayar=String.valueOf(format.format(jCalender.getDate()));
                 
                 ps.setString(3, TanggalBayar);
-                ps.setString(4, Denda.getText().replace(".", ""));
-                ps.setString(5, Jumlah.getText().replace(".", ""));
-                ps.setString(6, Keterangan.getText());
+                ps.setString(4, Biaya.getText().replace(".", ""));
+                ps.setString(5, Denda.getText().replace(".", ""));
+                ps.setString(6, Jumlah.getText().replace(".", ""));
+                ps.setString(7, Keterangan.getText());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Disimpan");
             }catch(Exception e){e.printStackTrace();
@@ -444,7 +455,7 @@ public class DialogBayarKamar extends javax.swing.JDialog {
     
     public void SaveEditBayarKamar(){
         try {
-            String sql = "UPDATE bayarkamar SET idbayarkamar=?, no_invoice=?,tanggalbayar=?,denda=?,jumlah=?, "
+            String sql = "UPDATE bayarkamar SET idbayarkamar=?, no_invoice=?,tanggalbayar=?,biaya=?,denda=?,jumlah=?, "
                     + "keterangan=? WHERE idbayarkamar='"+static_id_bayar_kamar_old+"'";
             PreparedStatement ps = conn.prepareStatement(sql);
             try {
@@ -455,9 +466,10 @@ public class DialogBayarKamar extends javax.swing.JDialog {
                 String TanggalBayar;
                 TanggalBayar=String.valueOf(format.format(jCalender.getDate()));                
                 ps.setString(3, TanggalBayar);
-                ps.setString(4, Denda.getText().replace(".", ""));
-                ps.setString(5, Jumlah.getText().replace(".", ""));
-                ps.setString(6, Keterangan.getText());
+                ps.setString(4, Biaya.getText().replace(".", ""));
+                ps.setString(5, Denda.getText().replace(".", ""));
+                ps.setString(6, Jumlah.getText().replace(".", ""));
+                ps.setString(7, Keterangan.getText());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Diedit");
             }catch(Exception e){e.printStackTrace();}
@@ -472,6 +484,7 @@ public class DialogBayarKamar extends javax.swing.JDialog {
                 IdBayarKamar.setText(rs.getString("idbayarkamar"));
                 cbInvoice.setSelectedItem(rs.getString("no_invoice"));
                 jCalender.setDate(rs.getDate("tanggalbayar"));
+                Biaya.setText(nf.format(rs.getDouble("biaya")));
                 Denda.setText(nf.format(rs.getDouble("denda")));
                 Jumlah.setText(nf.format(rs.getDouble("jumlah")));
                 Keterangan.setText(rs.getString("keterangan"));

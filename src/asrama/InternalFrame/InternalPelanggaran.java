@@ -226,7 +226,7 @@ public class InternalPelanggaran extends javax.swing.JInternalFrame {
         scroll.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        Object[] row = {"No Invoice","Tanggal","ID Kegiatan ","Kode Anggota ","Jumlah"};
+        Object[] row = {"No Invoice","Tanggal","ID Kegiatan ","Kode Anggota ","Jumlah", "Status Bayar"};
         tabMode = new DefaultTableModel(null,row);
         table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         table.setModel(tabMode);
@@ -235,6 +235,7 @@ public class InternalPelanggaran extends javax.swing.JInternalFrame {
         table.getColumnModel().getColumn(2).setPreferredWidth(150);
         table.getColumnModel().getColumn(3).setPreferredWidth(200);
         table.getColumnModel().getColumn(4).setPreferredWidth(200);
+        table.getColumnModel().getColumn(5).setPreferredWidth(200);
         table.getTableHeader().setFont(new Font("Dialog",Font.BOLD,15));
         table.setFont(new java.awt.Font("Dialog",0,12));
         scroll.getViewport().add(table);
@@ -245,7 +246,7 @@ public class InternalPelanggaran extends javax.swing.JInternalFrame {
         clearTable();
         try {
             String sql = "select pelanggaran.*,anggota.nama from pelanggaran,anggota where "
-                    + "anggota.kode=pelanggaran.kodeanggota";
+                    + "anggota.kode=pelanggaran.kodeanggota " + addQuery;
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){
                 String no_invoice = rs.getString("no_invoice");
@@ -253,7 +254,8 @@ public class InternalPelanggaran extends javax.swing.JInternalFrame {
                 String id_kegiatan = rs.getString("id_kegiatan");
                 String kodeanggota = rs.getString("kodeanggota");
                 String jumlah = nf.format(rs.getDouble("jumlah"));
-                String [] in_table = {no_invoice,tanggal,id_kegiatan,kodeanggota,jumlah};
+                String statusbayar = rs.getString("status_bayar");
+                String [] in_table = {no_invoice,tanggal,id_kegiatan,kodeanggota,jumlah,statusbayar};
                 tabMode.addRow(in_table);
             }
         }catch(Exception e){e.printStackTrace();}

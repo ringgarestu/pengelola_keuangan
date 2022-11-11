@@ -201,26 +201,31 @@ public class DialogBayarKios extends javax.swing.JDialog {
                     .addComponent(jLabel10)
                     .addComponent(jLabel9)
                     .addComponent(jLabel2))
-                .addGap(8, 8, 8)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTglBayar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Biaya)
-                                .addComponent(Denda)
-                                .addComponent(Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Keterangan, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(Biaya)
+                                        .addComponent(Denda)
+                                        .addComponent(Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Keterangan, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jSampai, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                                    .addComponent(jMulai, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Customer, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Kios, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbInvoice, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(IdBayarKios, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addContainerGap(99, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jSampai, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                            .addComponent(jMulai, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Customer, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Kios, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbInvoice, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(IdBayarKios, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addContainerGap(99, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jTglBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,24 +262,23 @@ public class DialogBayarKios extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Biaya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(5, 5, 5)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Denda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
-                        .addGap(13, 13, 13)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Keterangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)))
-                    .addComponent(jTglBayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTglBayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Denda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Keterangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -384,7 +388,7 @@ public class DialogBayarKios extends javax.swing.JDialog {
 
     public void getInvoice(){
         try {
-            String sql = "select sewakios.*,customer.nama_cust from sewakios,customer where sewakios.cust_id=customer.cust_id and sewakios.status_bayar='0'";
+            String sql = "select sewakios.*,customer.nama_cust from sewakios,customer where sewakios.cust_id=customer.cust_id and sewakios.status_bayar='Lunas'";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){
                 cbInvoice.addItem(rs.getString("no_invoice"));
@@ -409,10 +413,11 @@ public class DialogBayarKios extends javax.swing.JDialog {
             !"".equals(IdBayarKios.getText()) &&
             !"".equals(cbInvoice.getSelectedItem().toString()) &&
             jTglBayar.getDate() != null &&
+            !"".equals(Biaya.getText().replace(".", ""))&&
             !"".equals(Denda.getText().replace(".", "")) &&
             !"".equals(Keterangan.getText())
                 ) {
-            String sql = "insert into bayarkios values (?,?,?,?,?,?)";
+            String sql = "insert into bayarkios values (?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             try {
                 ps.setString(1, IdBayarKios.getText());
@@ -454,10 +459,11 @@ public class DialogBayarKios extends javax.swing.JDialog {
                 TanggalBayar=String.valueOf(format.format(jTglBayar.getDate()));
 
                 ps.setString(3, TanggalBayar);
-
+                
+                ps.setString(5, Biaya.getText().replace(".", ""));
                 ps.setString(4, Denda.getText().replace(".", ""));
-                ps.setString(5, Jumlah.getText().replace(".", ""));
-                ps.setString(6, Keterangan.getText());
+                ps.setString(6, Jumlah.getText().replace(".", ""));
+                ps.setString(7, Keterangan.getText());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Diedit");
             }catch(Exception e){e.printStackTrace();}
@@ -472,6 +478,7 @@ public class DialogBayarKios extends javax.swing.JDialog {
                 IdBayarKios.setText(rs.getString("idbayarkios"));
                 cbInvoice.setSelectedItem(rs.getString("no_invoice"));
                 jTglBayar.setDate(rs.getDate("tanggalbayar"));
+                Biaya.setText(nf.format(rs.getDouble("biaya")));
                 Denda.setText(nf.format(rs.getDouble("denda")));
                 Jumlah.setText(nf.format(rs.getDouble("jumlah")));
                 Keterangan.setText(rs.getString("keterangan"));

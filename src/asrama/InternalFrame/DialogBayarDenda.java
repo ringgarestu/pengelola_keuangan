@@ -87,11 +87,11 @@ public class DialogBayarDenda extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setText("No Invoice :");
+        jLabel1.setText("No Invoice ");
 
-        jLabel4.setText("Kegiatan :");
+        jLabel4.setText("Kegiatan ");
 
-        jLabel6.setText("Anggota  :");
+        jLabel6.setText("Anggota  ");
 
         Kegiatan.setEditable(false);
         Kegiatan.setBackground(new java.awt.Color(255, 255, 255));
@@ -109,9 +109,9 @@ public class DialogBayarDenda extends javax.swing.JDialog {
             }
         });
 
-        jLabel8.setText("Biaya :");
+        jLabel8.setText("Biaya ");
 
-        jLabel10.setText("Tanggal Bayar :");
+        jLabel10.setText("Tanggal Bayar ");
 
         Biaya.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         Biaya.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -158,12 +158,13 @@ public class DialogBayarDenda extends javax.swing.JDialog {
 
         jLabel9.setText("Keterangan");
 
-        jLabel5.setText("Tanggal :");
+        jLabel5.setText("Tanggal ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,8 +190,7 @@ public class DialogBayarDenda extends javax.swing.JDialog {
                             .addComponent(cbInvoice, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(IdBayarDenda, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Keterangan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(28, Short.MAX_VALUE))
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,12 +230,12 @@ public class DialogBayarDenda extends javax.swing.JDialog {
                     .addComponent(jLabel2)
                     .addComponent(Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(Keterangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                .addGap(47, 47, 47)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -308,7 +308,7 @@ public class DialogBayarDenda extends javax.swing.JDialog {
 
     public void getInvoice(){
         try {
-            String sql = "select pelanggaran.*,anggota.nama from pelanggaran,anggota where pelanggaran.kodeanggota=anggota.kode ";
+            String sql = "select pelanggaran.*,anggota.nama from pelanggaran,anggota where pelanggaran.kodeanggota=anggota.kode AND pelanggaran.statusbayar='Lunas'";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){
                 cbInvoice.addItem(rs.getString("no_invoice"));
@@ -333,9 +333,10 @@ public class DialogBayarDenda extends javax.swing.JDialog {
            !"".equals(IdBayarDenda.getText()) &&
            !"".equals(cbInvoice.getSelectedItem().toString()) &&
            jTglBayar.getDate() != null &&
+           !"".equals(Biaya.getText().replace(".", ""))&&
            !"".equals(Keterangan.getText())
                 ) {
-            String sql = "insert into bayardenda values (?,?,?,?,?)";
+            String sql = "insert into bayardenda values (?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             try {
                 ps.setString(1, IdBayarDenda.getText());
@@ -346,9 +347,10 @@ public class DialogBayarDenda extends javax.swing.JDialog {
                 String TglBayar;
                 TglBayar=String.valueOf(format.format(jTglBayar.getDate()));
                 ps.setString(3, TglBayar);
-                
-                ps.setString(4, Jumlah.getText().replace(".", ""));
-                ps.setString(5, Keterangan.getText());
+                ps.setString(4, Biaya.getText().replace(".", ""));
+                ps.setString(5, Jumlah.getText().replace(".", ""));
+                ps.setString(6, Keterangan.getText());
+     
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Disimpan");
             }catch(Exception e){e.printStackTrace();
@@ -362,7 +364,7 @@ public class DialogBayarDenda extends javax.swing.JDialog {
     
     public void SaveEditBayarDenda(){
         try {
-            String sql = "update bayardenda set idbayardenda=?, no_invoice=?,tanggalbayar=?,jumlah=?, "
+            String sql = "update bayardenda set idbayardenda=?, no_invoice=?,tanggalbayar=?,biaya=?, jumlah=?, "
                     + "keterangan=? where idbayardenda='"+static_id_bayar_kamar_old+"'";
             PreparedStatement ps = conn.prepareStatement(sql);
             try {
@@ -374,11 +376,11 @@ public class DialogBayarDenda extends javax.swing.JDialog {
                 String TglBayar;
                 TglBayar=String.valueOf(format.format(jTglBayar.getDate()));
                 ps.setString(3, TglBayar);
-                
-                ps.setString(4, Jumlah.getText().replace(".", ""));
-                ps.setString(5, Keterangan.getText());
+                ps.setString(4, Biaya.getText().replace(".", ""));
+                ps.setString(5, Jumlah.getText().replace(".", ""));
+                ps.setString(6, Keterangan.getText());
                 ps.executeUpdate();
-                JOptionPane.showMessageDialog(rootPane, "Edit Data Success..");
+                JOptionPane.showMessageDialog(rootPane, "Data Berhasil Diedit");
             }catch(Exception e){e.printStackTrace();}
         }catch(Exception e){e.printStackTrace();}
     }

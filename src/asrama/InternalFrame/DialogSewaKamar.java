@@ -172,6 +172,11 @@ public class DialogSewaKamar extends javax.swing.JDialog {
         jPanel4.add(buttonClose1);
 
         cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunas", "Belum Lunas" }));
+        cbStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbStatusActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -329,6 +334,10 @@ public class DialogSewaKamar extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbKamarActionPerformed
 
+    private void cbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbStatusActionPerformed
+
     public void getKamar(){
         try {
             String sql = "select * from kamar where kategori = 'anggota'";
@@ -409,7 +418,7 @@ public class DialogSewaKamar extends javax.swing.JDialog {
                 
                 ps.setString(4, TanggalMulai);
                 ps.setString(5, TanggalSampai);
-                ps.setString(6, Biaya.getText().replace(".", ""));;
+                ps.setString(6, Biaya.getText().replace(",", ""));;
                 ps.setString(7, cbStatus.getSelectedItem().toString());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Diedit");
@@ -428,7 +437,7 @@ public class DialogSewaKamar extends javax.swing.JDialog {
                 jMulai.setDate(rs.getDate("tglmulai"));
                 jSampai.setDate(rs.getDate("tglsampai"));
                 Biaya.setText(nf.format(rs.getDouble("biaya")));
-                cbStatus.setSelectedItem(nf.format(rs.getDouble("status_bayar")));
+                cbStatus.setSelectedItem(rs.getString("status_bayar"));
             }
         }catch(Exception e){e.printStackTrace();}
     }

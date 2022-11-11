@@ -61,16 +61,14 @@
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="KamarID" alignment="0" max="32767" attributes="0"/>
-                          <Component id="KamarName" alignment="0" pref="140" max="32767" attributes="0"/>
+                          <Component id="IDKamar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="NamaKamarTamu" alignment="0" pref="140" max="32767" attributes="0"/>
                           <Component id="description" alignment="0" pref="140" max="32767" attributes="0"/>
-                          <Component id="KamarCode" alignment="0" pref="140" max="32767" attributes="0"/>
+                          <Component id="KodeKamarTamu" alignment="0" pref="140" max="32767" attributes="0"/>
                           <Component id="cbStatus" max="32767" attributes="0"/>
-                          <Component id="cbKategori" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -89,17 +87,17 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="KamarID" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="IDKamar" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="KamarCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="KodeKamarTamu" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="KamarName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="NamaKamarTamu" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -112,15 +110,11 @@
                                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="32" max="32767" attributes="0"/>
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="210" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cbKategori" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -149,22 +143,22 @@
                 <Property name="text" type="java.lang.String" value="Deskripsi  "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="KamarID">
+            <Component class="javax.swing.JTextField" name="IDKamar">
               <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KamarIDKeyPressed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="IDKamarKeyPressed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="KamarCode">
+            <Component class="javax.swing.JTextField" name="KodeKamarTamu">
               <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KamarCodeKeyPressed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KodeKamarTamuKeyPressed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="KamarName">
+            <Component class="javax.swing.JTextField" name="NamaKamarTamu">
               <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KamarNameKeyPressed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NamaKamarTamuKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="description">
@@ -177,11 +171,6 @@
                 <Property name="text" type="java.lang.String" value="Status "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Kategori "/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
@@ -192,19 +181,6 @@
                   <StringArray count="2">
                     <StringItem index="0" value="Kosong"/>
                     <StringItem index="1" value="Isi"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cbKategori">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Anggota"/>
-                    <StringItem index="1" value="Tamu"/>
                   </StringArray>
                 </Property>
               </Properties>

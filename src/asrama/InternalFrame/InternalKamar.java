@@ -198,6 +198,10 @@ public class InternalKamar extends javax.swing.JInternalFrame {
         getDataKamar("");
     }//GEN-LAST:event_buttonDeleteActionPerformed
 
+    private void buttonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCloseActionPerformed
+    dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCloseActionPerformed
+
     private void buttonFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFilterActionPerformed
         addQuery = "where (kamar_id like ('%"+filterName.getText()+"%') or kamar_name like ('%"+filterName.getText()+"%'))";
         getDataKamar(addQuery);
@@ -210,16 +214,12 @@ public class InternalKamar extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_filterNameKeyPressed
 
-    private void buttonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCloseActionPerformed
-    dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonCloseActionPerformed
-
     public void createTableKamar(){
         jPanel1.setLayout(new java.awt.BorderLayout());
         scroll.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        Object[] row = {"ID Kamar","Kode Kamar","Nama Kamar","Keterangan","Status","Kategori"};
+        Object[] row = {"ID Kamar","Kode Kamar","Nama Kamar","Keterangan","Status"};
         tabMode = new DefaultTableModel(null,row);
         table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         table.setModel(tabMode);
@@ -228,7 +228,6 @@ public class InternalKamar extends javax.swing.JInternalFrame {
         table.getColumnModel().getColumn(2).setPreferredWidth(200);
         table.getColumnModel().getColumn(3).setPreferredWidth(250);
         table.getColumnModel().getColumn(4).setPreferredWidth(100);
-        table.getColumnModel().getColumn(5).setPreferredWidth(100);
         table.getTableHeader().setFont(new Font("Dialog",Font.BOLD,15));
         table.setFont(new java.awt.Font("Dialog",0,12));
         scroll.getViewport().add(table);
@@ -246,8 +245,7 @@ public class InternalKamar extends javax.swing.JInternalFrame {
                 String kamar_name = rs.getString("kamar_name");
                 String deskripsi = rs.getString("description");
                 String status = rs.getString("status");
-                String kategori = rs.getString("kategori");
-                String [] in_table = {kamar_id,kamar_code,kamar_name,deskripsi,status,kategori};
+                String [] in_table = {kamar_id,kamar_code,kamar_name,deskripsi,status};
                 tabMode.addRow(in_table);
             }
         }catch(Exception e){e.printStackTrace();}

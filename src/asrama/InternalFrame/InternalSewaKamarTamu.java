@@ -250,7 +250,7 @@ public class InternalSewaKamarTamu extends javax.swing.JInternalFrame {
         clearTable();
         try {
             String sql = "select sewakamartamu.*,customer.nama_cust from sewakamartamu,customer where "
-                    + "customer.cust_id=sewakamartamu.cust_id";
+                    + "customer.cust_id=sewakamartamu.cust_id " + addQuery;
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){
                 String no_invoice = rs.getString("no_invoice");

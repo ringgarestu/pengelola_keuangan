@@ -51,16 +51,14 @@ public final class DialogKamar extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        KamarID = new javax.swing.JTextField();
-        KamarCode = new javax.swing.JTextField();
-        KamarName = new javax.swing.JTextField();
+        IDKamar = new javax.swing.JTextField();
+        KodeKamarTamu = new javax.swing.JTextField();
+        NamaKamarTamu = new javax.swing.JTextField();
         description = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cbStatus = new javax.swing.JComboBox<>();
-        cbKategori = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         buttonSave = new javax.swing.JButton();
         buttonClose = new javax.swing.JButton();
@@ -81,21 +79,21 @@ public final class DialogKamar extends javax.swing.JDialog {
 
         jLabel4.setText("Deskripsi  ");
 
-        KamarID.addKeyListener(new java.awt.event.KeyAdapter() {
+        IDKamar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KamarIDKeyPressed(evt);
+                IDKamarKeyPressed(evt);
             }
         });
 
-        KamarCode.addKeyListener(new java.awt.event.KeyAdapter() {
+        KodeKamarTamu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KamarCodeKeyPressed(evt);
+                KodeKamarTamuKeyPressed(evt);
             }
         });
 
-        KamarName.addKeyListener(new java.awt.event.KeyAdapter() {
+        NamaKamarTamu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KamarNameKeyPressed(evt);
+                NamaKamarTamuKeyPressed(evt);
             }
         });
 
@@ -107,11 +105,7 @@ public final class DialogKamar extends javax.swing.JDialog {
 
         jLabel5.setText("Status ");
 
-        jLabel6.setText("Kategori ");
-
         cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kosong", "Isi" }));
-
-        cbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Anggota", "Tamu" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -124,16 +118,14 @@ public final class DialogKamar extends javax.swing.JDialog {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel5))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(KamarID)
-                    .addComponent(KamarName, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                    .addComponent(IDKamar)
+                    .addComponent(NamaKamarTamu, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                     .addComponent(description, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addComponent(KamarCode, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addComponent(cbStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbKategori, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(KodeKamarTamu, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                    .addComponent(cbStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
@@ -148,15 +140,15 @@ public final class DialogKamar extends javax.swing.JDialog {
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(KamarID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(IDKamar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(KamarCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(KodeKamarTamu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(KamarName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(NamaKamarTamu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -166,13 +158,10 @@ public final class DialogKamar extends javax.swing.JDialog {
                             .addComponent(jLabel5)
                             .addComponent(jLabel7)
                             .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addComponent(jLabel6))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 210, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(cbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 230, Short.MAX_VALUE)
+                        .addComponent(jLabel8)))
                 .addContainerGap())
         );
 
@@ -206,26 +195,26 @@ public final class DialogKamar extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void KamarIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KamarIDKeyPressed
+    private void IDKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IDKamarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            KamarCode.selectAll();
-            KamarCode.requestFocus();
+            KodeKamarTamu.selectAll();
+            KodeKamarTamu.requestFocus();
         }
-    }//GEN-LAST:event_KamarIDKeyPressed
+    }//GEN-LAST:event_IDKamarKeyPressed
 
-    private void KamarCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KamarCodeKeyPressed
+    private void KodeKamarTamuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeKamarTamuKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            KamarName.selectAll();
-            KamarName.requestFocus();
+            NamaKamarTamu.selectAll();
+            NamaKamarTamu.requestFocus();
         }
-    }//GEN-LAST:event_KamarCodeKeyPressed
+    }//GEN-LAST:event_KodeKamarTamuKeyPressed
 
-    private void KamarNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KamarNameKeyPressed
+    private void NamaKamarTamuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaKamarTamuKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             description.selectAll();
             description.requestFocus();
         }
-    }//GEN-LAST:event_KamarNameKeyPressed
+    }//GEN-LAST:event_NamaKamarTamuKeyPressed
 
     private void descriptionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descriptionKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -233,6 +222,10 @@ public final class DialogKamar extends javax.swing.JDialog {
             description.requestFocus();
         }
     }//GEN-LAST:event_descriptionKeyPressed
+
+    private void buttonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCloseActionPerformed
+        dispose();
+    }//GEN-LAST:event_buttonCloseActionPerformed
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
         if(status_dialog.equalsIgnoreCase("new")){
@@ -247,35 +240,29 @@ public final class DialogKamar extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_buttonSaveActionPerformed
 
-    private void buttonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCloseActionPerformed
-        dispose();
-    }//GEN-LAST:event_buttonCloseActionPerformed
-
     public void createIDKamar(){
         try {
             String sql = "select coalesce(max(kamar_id)+1,3010001) as max_kamar_id from kamar";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             if(rs.next()){
-                KamarID.setText(rs.getString("max_kamar_id"));
+                IDKamar.setText(rs.getString("max_kamar_id"));
             }
         }catch(Exception e){e.printStackTrace();}
     }
     
     public void SaveNewKamar() throws SQLException{
-        if (!"".equals(KamarCode.getText()) &&
-            !"".equals(KamarName.getText()) &&
+        if (!"".equals(KodeKamarTamu.getText()) &&
+            !"".equals(NamaKamarTamu.getText()) &&
             !"".equals(description.getText()) &&
-            cbStatus.getSelectedItem().toString()!= "" &&
-            cbKategori.getSelectedItem().toString() != "") {
-            String sql = "insert into kamar values (?,?,?,?,?,?)";
+            cbStatus.getSelectedItem().toString()!= ""){
+            String sql = "insert into kamar values (?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             try {
-                ps.setString(1, KamarID.getText());
-                ps.setString(2, KamarCode.getText());
-                ps.setString(3, KamarName.getText());
+                ps.setString(1, IDKamar.getText());
+                ps.setString(2, KodeKamarTamu.getText());
+                ps.setString(3, NamaKamarTamu.getText());
                 ps.setString(4, description.getText());
                 ps.setString(5, cbStatus.getSelectedItem().toString());
-                ps.setString(6, cbKategori.getSelectedItem().toString());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Disimpan");
             }catch(Exception e){e.printStackTrace();
@@ -288,16 +275,15 @@ public final class DialogKamar extends javax.swing.JDialog {
     
     public void SaveEditKamar(){
         try {
-            String sql = "update kamar set kamar_id=?,kamar_code=?,kamar_name=?,description=?,status=?,kategori=?"
+            String sql = "update kamar set kamar_id=?,kamar_code=?,kamar_name=?,description=?,status=?"
                     + "where kamar_id='"+static_kamar_id_old+"'";
             PreparedStatement ps = conn.prepareStatement(sql);
             try {
-                ps.setString(1, KamarID.getText());
-                ps.setString(2, KamarCode.getText());
-                ps.setString(3, KamarName.getText());
+                ps.setString(1, IDKamar.getText());
+                ps.setString(2, KodeKamarTamu.getText());
+                ps.setString(3, NamaKamarTamu.getText());
                 ps.setString(4, description.getText());
                 ps.setString(5, cbStatus.getSelectedItem().toString());
-                ps.setString(6, cbKategori.getSelectedItem().toString());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Diedit");
             }catch(Exception e){e.printStackTrace();}
@@ -309,23 +295,21 @@ public final class DialogKamar extends javax.swing.JDialog {
             String sql = "select *from kamar where kamar_id='"+static_kamar_id_old+"'";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){
-                KamarID.setText(rs.getString("kamar_id"));
-                KamarCode.setText(rs.getString("kamar_code"));
-                KamarName.setText(rs.getString("kamar_name"));
+                IDKamar.setText(rs.getString("kamar_id"));
+                KodeKamarTamu.setText(rs.getString("kamar_code"));
+                NamaKamarTamu.setText(rs.getString("kamar_name"));
                 description.setText(rs.getString("description"));
                 cbStatus.setSelectedItem(rs.getString("status"));
-                cbKategori.setSelectedItem(rs.getString("kategori"));
             }
         }catch(Exception e){e.printStackTrace();}
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField KamarCode;
-    public static javax.swing.JTextField KamarID;
-    private javax.swing.JTextField KamarName;
+    public static javax.swing.JTextField IDKamar;
+    private javax.swing.JTextField KodeKamarTamu;
+    private javax.swing.JTextField NamaKamarTamu;
     private javax.swing.JButton buttonClose;
     private javax.swing.JButton buttonSave;
-    private javax.swing.JComboBox<String> cbKategori;
     private javax.swing.JComboBox<String> cbStatus;
     private javax.swing.JTextField description;
     private javax.swing.JLabel jLabel1;
@@ -333,7 +317,6 @@ public final class DialogKamar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;

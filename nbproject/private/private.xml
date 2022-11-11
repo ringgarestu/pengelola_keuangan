@@ -3,35 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/RenderingRight.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/Login.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/MainFrame.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/DialogAnggota.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/DialogBayarDenda.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/Register.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/connect_DB.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/DialogKios.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/InternalLapKeuangan.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/InternalKios.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/DialogSewaKamar.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/DialogPengeluaran.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/InternalTagihanBlmBayar.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/Encryption.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/InternalBayarKamar.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/DialogKegiatan.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/InternalKegiatan.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/RenderingCenter.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/DialogSewaKios.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/DialogCustomer.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/DialogKelolaAkun.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/InternalKamar.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/InternalAnggota.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/InternalBayarDenda.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/InternalKelolaAkun.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/DialogBayarKamar.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/InternalSewaKamar.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/DialogSewaKamarTamu.java</file>
-            <file>file:/E:/Program%20Skripsi%20Ringga/Project/Asrama/src/asrama/InternalFrame/DialogKamar.java</file>
+            <file>file:/E:/Program_Skripsi_Ringga/Project/Asrama/src/asrama/MainFrame.java</file>
+            <file>file:/E:/Program_Skripsi_Ringga/Project/Asrama/src/asrama/InternalFrame/InternalKamar.java</file>
+            <file>file:/E:/Program_Skripsi_Ringga/Project/Asrama/src/asrama/InternalFrame/DialogKamarTamu.java</file>
         </group>
     </open-files>
 </project-private>

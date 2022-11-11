@@ -73,6 +73,8 @@ public class DialogPelanggaran extends javax.swing.JDialog {
         buttonClose1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTanggal = new com.toedter.calendar.JDateChooser();
+        jLabel9 = new javax.swing.JLabel();
+        cmbStatusBayar = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Detail Pelanggan");
@@ -158,6 +160,10 @@ public class DialogPelanggaran extends javax.swing.JDialog {
 
         jLabel2.setText("Tanggal ");
 
+        jLabel9.setText("Status");
+
+        cmbStatusBayar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunas", "Belum Lunas" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -170,20 +176,23 @@ public class DialogPelanggaran extends javax.swing.JDialog {
                     .addComponent(jLabel4)
                     .addComponent(jLabel6)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel9))
                 .addGap(43, 43, 43)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Biaya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(No_Invoice, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(cbKegiatan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Kegiatan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(cbAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Anggota, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(Biaya, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(No_Invoice, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(cbKegiatan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Kegiatan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(cbAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Anggota, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cmbStatusBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -215,9 +224,17 @@ public class DialogPelanggaran extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Biaya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbStatusBayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -326,9 +343,10 @@ public class DialogPelanggaran extends javax.swing.JDialog {
             !"".equals(No_Invoice.getText()) &&
             jTanggal.getDate() != null &&
             !"".equals(cbKegiatan.getSelectedItem().toString()) &&
-            !"".equals(cbAnggota.getSelectedItem().toString()) 
+            !"".equals(cbAnggota.getSelectedItem().toString()) &&
+            !"".equals(cmbStatusBayar.getSelectedItem().toString())
             ) {
-            String sql = "insert into pelanggaran values (?,?,?,?,?)";
+            String sql = "insert into pelanggaran values (?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             try {
                 ps.setString(1, No_Invoice.getText());
@@ -343,7 +361,8 @@ public class DialogPelanggaran extends javax.swing.JDialog {
                 
                 ps.setString(3, cbKegiatan.getSelectedItem().toString());
                 ps.setString(4, cbAnggota.getSelectedItem().toString());
-                ps.setString(5, Biaya.getText().replace(".", ""));;
+                ps.setString(5, Biaya.getText().replace(",", ""));;
+                ps.setString(6, cmbStatusBayar.getSelectedItem().toString());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Disimpan");
             }catch(Exception e){e.printStackTrace();
@@ -356,7 +375,7 @@ public class DialogPelanggaran extends javax.swing.JDialog {
     
     public void SaveEditPelanggaran(){
         try {
-            String sql = "update pelanggaran set no_invoice=?,id_kegiatan=?,kodeanggota=?,jumlah=? "
+            String sql = "update pelanggaran set no_invoice=?,id_kegiatan=?,kodeanggota=?,jumlah=?, status_bayar=? "
                     + " where no_invoice='"+static_no_invoice_old+"'";
             PreparedStatement ps = conn.prepareStatement(sql);
             try {
@@ -371,7 +390,8 @@ public class DialogPelanggaran extends javax.swing.JDialog {
                 
                 ps.setString(2, cbKegiatan.getSelectedItem().toString());
                 ps.setString(3, cbAnggota.getSelectedItem().toString());
-                ps.setString(4, Biaya.getText().replace(".", ""));;
+                ps.setString(4, Biaya.getText().replace(",", ""));;
+                ps.setString(5, cmbStatusBayar.getSelectedItem().toString());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Diedit");
             }catch(Exception e){e.printStackTrace();}
@@ -388,6 +408,7 @@ public class DialogPelanggaran extends javax.swing.JDialog {
                 cbKegiatan.setSelectedItem(rs.getString("id_kegiatan"));
                 cbAnggota.setSelectedItem(rs.getString("kodeanggota"));
                 Biaya.setText(nf.format(rs.getDouble("jumlah")));
+                cmbStatusBayar.setSelectedItem(rs.getString("status_bayar"));
                 }
         }catch(Exception e){e.printStackTrace();}
     }
@@ -401,11 +422,13 @@ public class DialogPelanggaran extends javax.swing.JDialog {
     private javax.swing.JButton buttonSave1;
     private javax.swing.JComboBox<String> cbAnggota;
     private javax.swing.JComboBox<String> cbKegiatan;
+    private javax.swing.JComboBox<String> cmbStatusBayar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;

@@ -44,7 +44,7 @@ public class DialogSewaKios extends javax.swing.JDialog {
             getDetailSewaKios();
         }
         getKios();
-        getCustomer();
+//        getCustomer();
     }
 
     /**
@@ -60,17 +60,14 @@ public class DialogSewaKios extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         No_Invoice = new javax.swing.JTextField();
         Kios = new javax.swing.JTextField();
-        Customer = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         Biaya = new javax.swing.JTextField();
         cbKios = new javax.swing.JComboBox<>();
-        cbCustomer = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         buttonSave1 = new javax.swing.JButton();
         buttonClose1 = new javax.swing.JButton();
@@ -90,8 +87,6 @@ public class DialogSewaKios extends javax.swing.JDialog {
 
         jLabel4.setText("Kode Kios");
 
-        jLabel6.setText("ID Pelanggan");
-
         jLabel7.setText("Tanggal Mulai ");
 
         No_Invoice.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -105,14 +100,6 @@ public class DialogSewaKios extends javax.swing.JDialog {
         Kios.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KiosKeyPressed(evt);
-            }
-        });
-
-        Customer.setEditable(false);
-        Customer.setBackground(new java.awt.Color(255, 255, 255));
-        Customer.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                CustomerKeyPressed(evt);
             }
         });
 
@@ -132,12 +119,6 @@ public class DialogSewaKios extends javax.swing.JDialog {
         cbKios.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbKiosItemStateChanged(evt);
-            }
-        });
-
-        cbCustomer.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbCustomerItemStateChanged(evt);
             }
         });
 
@@ -167,76 +148,74 @@ public class DialogSewaKios extends javax.swing.JDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(No_Invoice, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(cbCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Customer, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(cbKios, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Kios, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jMulai, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSampai, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(cbStatus, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Biaya, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
-                .addContainerGap(43, Short.MAX_VALUE))
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel8))
+                            .addGap(47, 47, 47)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(No_Invoice, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(cbKios, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Kios, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cbStatus, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Biaya, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
+                            .addGap(4, 4, 4))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jMulai, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(23, 23, 23)
+                        .addComponent(jSampai, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel10))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(No_Invoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(No_Invoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
                             .addComponent(cbKios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Kios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cbCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Customer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel7))
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
                     .addComponent(jMulai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jSampai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(Biaya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSampai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Biaya, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(47, 47, 47)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -261,29 +240,14 @@ public class DialogSewaKios extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_KiosKeyPressed
 
-    private void CustomerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CustomerKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Customer.selectAll();
-            Customer.requestFocus();        }
-    }//GEN-LAST:event_CustomerKeyPressed
-
     private void cbKiosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbKiosItemStateChanged
         try {
             String sql = "select kios_name from kios where kios_code='"+cbKios.getSelectedItem().toString()+"'";
             ResultSet rs = conn.createStatement().executeQuery(sql);
             while(rs.next()){Kios.setText(rs.getString("kios_name"));}
         }catch(Exception e){e.printStackTrace();}
-        cbCustomer.requestFocus();
+//        cbCustomer.requestFocus();
     }//GEN-LAST:event_cbKiosItemStateChanged
-
-    private void cbCustomerItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbCustomerItemStateChanged
-        try {
-            String sql = "select nama_cust from customer where cust_id='"+cbCustomer.getSelectedItem().toString()+"'";
-            ResultSet rs = conn.createStatement().executeQuery(sql);
-            while(rs.next()){Customer.setText(rs.getString("nama_cust"));}
-        }catch(Exception e){e.printStackTrace();}
-        jMulai.requestFocus();
-    }//GEN-LAST:event_cbCustomerItemStateChanged
 
     private void BiayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BiayaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -318,13 +282,13 @@ public class DialogSewaKios extends javax.swing.JDialog {
         }catch(Exception e){e.printStackTrace();}
     }
     
-    public void getCustomer(){
-        try {
-            String sql = "select * from customer";
-            ResultSet rs = conn.createStatement().executeQuery(sql);
-            while(rs.next()){cbCustomer.addItem(rs.getString("cust_id"));}
-        }catch(Exception e){e.printStackTrace();}
-    }
+//    public void getCustomer(){
+//        try {
+//            String sql = "select * from customer";
+//            ResultSet rs = conn.createStatement().executeQuery(sql);
+//            while(rs.next()){cbCustomer.addItem(rs.getString("cust_id"));}
+//        }catch(Exception e){e.printStackTrace();}
+//    }
     
     public void createNoInvoice(){
         try {
@@ -339,29 +303,29 @@ public class DialogSewaKios extends javax.swing.JDialog {
     public void SaveNewSewaKios() throws SQLException{
         if (!"".equals(No_Invoice.getText()) &&
             !"".equals(cbKios.getSelectedItem().toString()) &&
-            !"".equals(cbCustomer.getSelectedItem().toString()) &&
+//            !"".equals(cbCustomer.getSelectedItem().toString()) &&
             jMulai.getDate() != null &&
             jSampai.getDate() != null &&
             !"".equals(Biaya.getText().replace(".", "")) &&
             !"".equals(cbStatus.getSelectedItem().toString()) 
                 ) {
-            String sql = "insert into sewakios values (?,?,?,?,?,?,?)";
+            String sql = "insert into sewakios values (?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             try {
                 ps.setString(1, No_Invoice.getText());
                 ps.setString(2, cbKios.getSelectedItem().toString());
-                ps.setString(3, cbCustomer.getSelectedItem().toString());
+//                ps.setString(3, cbCustomer.getSelectedItem().toString());
                 String pattern="yyyy-MM-dd";
                 SimpleDateFormat format=new SimpleDateFormat(pattern);
                 String TanggalMulai,TanggalSampai;
                 TanggalMulai=String.valueOf(format.format(jMulai.getDate()));
                 TanggalSampai=String.valueOf(format.format(jSampai.getDate()));
                 
-                ps.setString(4, TanggalMulai);
-                ps.setString(5, TanggalSampai);
+                ps.setString(3, TanggalMulai);
+                ps.setString(4, TanggalSampai);
                 
-                ps.setString(6, Biaya.getText().replace(".", ""));;
-                ps.setString(7, cbStatus.getSelectedItem().toString());
+                ps.setString(5, Biaya.getText().replace(",", ""));;
+                ps.setString(6, cbStatus.getSelectedItem().toString());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Disimpan");
             }catch(Exception e){e.printStackTrace();
@@ -374,13 +338,13 @@ public class DialogSewaKios extends javax.swing.JDialog {
     
     public void SaveEditSewaKios(){
         try {
-            String sql = "update sewakios set no_invoice=?,kios_code=?,cust_id=?,tglmulai=?,tglsampai=?,biaya=?, "
+            String sql = "update sewakios set no_invoice=?,kios_code=?,tglmulai=?,tglsampai=?,biaya=?, "
                     + "status_bayar=? where no_invoice='"+static_no_invoice_old+"'";
             PreparedStatement ps = conn.prepareStatement(sql);
             try {
                 ps.setString(1, No_Invoice.getText());
                 ps.setString(2, cbKios.getSelectedItem().toString());
-                ps.setString(3, cbCustomer.getSelectedItem().toString());
+//                ps.setString(3, cbCustomer.getSelectedItem().toString());
                 
                 String pattern="yyyy-MM-dd";
                 SimpleDateFormat format=new SimpleDateFormat(pattern);
@@ -388,11 +352,11 @@ public class DialogSewaKios extends javax.swing.JDialog {
                 TanggalMulai=String.valueOf(format.format(jMulai.getDate()));
                 TanggalSampai=String.valueOf(format.format(jSampai.getDate()));
                 
-                ps.setString(4, TanggalMulai);
-                ps.setString(5, TanggalSampai);
+                ps.setString(3, TanggalMulai);
+                ps.setString(4, TanggalSampai);
                 
-                ps.setString(6, Biaya.getText().replace(".", ""));;
-                ps.setString(7, cbStatus.getSelectedItem().toString());
+                ps.setString(5, Biaya.getText().replace(",", ""));;
+                ps.setString(6, cbStatus.getSelectedItem().toString());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Diedit");
             }catch(Exception e){e.printStackTrace();}
@@ -406,30 +370,27 @@ public class DialogSewaKios extends javax.swing.JDialog {
             while(rs.next()){
                 No_Invoice.setText(rs.getString("no_invoice"));
                 cbKios.setSelectedItem(rs.getString("kios_code"));
-                cbCustomer.setSelectedItem(rs.getString("cust_id"));
+//                cbCustomer.setSelectedItem(rs.getString("cust_id"));
                 jMulai.setDate(rs.getDate("tglmulai"));
                 jSampai.setDate(rs.getDate("tglsampai"));
                 Biaya.setText(nf.format(rs.getDouble("biaya")));
-                cbStatus.setSelectedItem(nf.format(rs.getDouble("status_bayar")));
+                cbStatus.setSelectedItem(rs.getString("status_bayar"));
             }
         }catch(Exception e){e.printStackTrace();}
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Biaya;
-    private javax.swing.JTextField Customer;
     private javax.swing.JTextField Kios;
     public static javax.swing.JTextField No_Invoice;
     private javax.swing.JButton buttonClose1;
     private javax.swing.JButton buttonSave1;
-    private javax.swing.JComboBox<String> cbCustomer;
     private javax.swing.JComboBox<String> cbKios;
     private javax.swing.JComboBox<String> cbStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private com.toedter.calendar.JDateChooser jMulai;
